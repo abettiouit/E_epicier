@@ -1,0 +1,35 @@
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.pageTitle {
+    letter-spacing: 12px !important;
+    font-size: 60px !important;
+}
+
+.inputLog ,.inputLog:focus{
+    height: 80px !important;
+    border-radius: 35px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-color: rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px !important;
+    font-size: 25px;
+    box-shadow: none !important;
+}
+
+.inputLog::-webkit-input-placeholder {
+    color: white !important;
+}
+.suggestion{
+    font-size: 20px;
+    font-weight: 600;
+}
+.suggestion a{
+    font-size: 24px;
+    font-weight: 800;
+    text-decoration: underline;
+    color: white;
+}

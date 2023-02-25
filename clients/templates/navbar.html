@@ -1,0 +1,29 @@
+<nav  class="py-4">
+    <div style="width: 240px;float: right;" class="">
+        <div style="padding-left: 20px;padding-top: 5px;" class="user-info input-add">
+            <div class="row w-100">
+                <div class="pr-2">
+                    <img style="width: 40px;border-radius: 50%;" src="/static/assets/images/avatar.jpeg" alt="">
+                </div>
+                <div >
+                    <span style="font-family: 'Inter'; font-style: normal; font-weight: 500; font-size: 18px;">
+                        {{request.session.user_name}}
+                    </span>
+                    <br>
+                    <div style="
+                        
+                        font-family: 'Inter';
+                        font-style: normal;
+                        font-weight: 700;
+                        float: right;
+                        font-size: 12px;"
+                        
+                    >
+                        <a style="color: #FF0000;" href="/admin/logout">LogOut</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>

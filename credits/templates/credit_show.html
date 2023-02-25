@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Gestion Credit{% endblock %}
+{% block content %}
+
+<div class="my-5 col-9 box-form">
+
+
+    <div class="row">
+        <div class="col-6">
+            <h3 class="p-2 pt-4 titel-form">Gestion Credit</h3>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-4">
+            <form action="/credits/search">
+                <input value="{{search}}" class="input-add m-2 recherche-form" placeholder="Rechercher un client" name="name" type="text">
+            </form>
+        </div>
+    </div>
+    <div style="padding: 4px;" class="row py-4">
+        <!-- start table -->
+        <table class="table table-borderless">
+            <thead>
+                <tr class="tr-show tr-title">
+
+                    <th>Client</th>
+                    <th>Produit</th>
+                    <th>Price</th>
+                    <th>Qte</th>
+                    <th>Total</th>
+                    <th>Etat</th>
+                    <th>Action</th>
+
+                </tr>
+                <tr style="height: 15px;">
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for credit in credits %}
+                <tr class="tr-show">
+                    <td>{{ credit.client.name }}</td>
+                    <td>{{ credit.product.name }}</td>
+                    <td>{{ credit.price }}</td>
+                    <td>{{ credit.quantite }}</td>
+                    <td>{{ credit.total }}</td>
+                    <td>
+
+                        {% if credit.etat %}
+                        paye
+                        {% else %}
+                        Non paye
+                        {% endif %}
+                    </td>
+                    <td>
+
+                        <div class="row">
+
+                            {% if not credit.etat %}
+                            <div class="col-6">
+
+                                <!-- start editer -->
+                                <a href="/credits/edit/{{ credit.id }}">
+                                    <button class="w-100 btn btn-success text-white " type="submit"
+                                        style="font-size: 10px;border-radius: 15px;">
+                                        EDITER
+                                    </button>
+                                </a>
+                                <!-- end editer -->
+
+                            </div>
+                            {% endif %}
+                            {% if not credit.etat %}
+                            <div class="col-6">
+                                <a href="/credits/paye/{{ credit.id }}">
+                                    <button class="w-100 btn btn-dark text-white " type="submit"
+                                        style="font-size: 10px;border-radius: 15px;">
+                                        Paye
+                                    </button>
+                                </a>
+                            </div>
+                            {% else %}
+                            <div class="col-6">
+
+                                <a href="/credits/delete/{{ credit.id }}">
+                                    <button class="w-100 btn btn-danger text-white " type="submit"
+                                        style="font-size: 10px;border-radius: 15px;">
+                                        Supprimer
+                                    </button>
+                                </a>
+
+                            </div>
+                            {% endif %}
+
+
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr style="height: 5px;">
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <!-- end table -->
+    </div>
+
+</div>
+
+{% endblock %}

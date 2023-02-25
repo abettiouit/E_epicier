@@ -1,0 +1,116 @@
+
+{% extends "base.html" %}
+{% block title %}Gestion Credit{% endblock %}
+{% block content %}
+
+<div class="my-5 col-9 box-form">
+  <form action="/credits/update/{{credit.id}}" method="post">
+    {% csrf_token %}
+    <div>
+      <h3 class="p-4 titel-form">Nouveau Crédit</h3>
+      <div style="font-weight: 700;" class="text-center">
+        Avec cette page vous pouvez Affecter des Credits à des Clients
+      </div>
+      <div class="row py-4">
+        <div class="col-2"></div>
+        <div class="col-4">
+          <select name="client" class="input-add"
+            aria-label=".form-select-lg example">
+            <option value="{{credit.client.id}}">{{credit.client.name}}</option>
+            {% for client in clients %}
+              {% if credit.client.id != client.id %}
+                <option value="{{client.id}}">{{client.name}}</option>
+              {% endif %}
+            
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-2">
+          <input name="quantite" value="{{credit.quantite}}" placeholder="Quantite" class="input-add" type="text">
+          <span style="font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 30px;"> à</span>
+        </div>
+        <div class="col-4">
+          <select name="product" class="input-add"
+            aria-label=".form-select-lg example">
+            <option value="{{credit.product.id}}">{{credit.product.name}}</option>
+            {% for product in products %}
+              {% if credit.product.id != product.id %}
+                <option value="{{product.id}}">{{product.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+       
+      </div>
+      <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+          <button type="submit" style="background: rgba(0, 0, 0, 0.73);color: #FFFFFF; border:1px solid #000000;"
+            class="input-add">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+
+
+ <!-- <form method="POST" class="post-form" action="/credits/update/{{credit.id}}">
+    {% csrf_token %}
+    <div class="container">
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+          <h3>Update Details</h3>
+        </div>
+      </div>
+      <div class="form-group row" style="display:none;">
+        <div class="col-sm-4">
+          <input type="text" name="id" id="id" required maxlength="20" value="{{ credit.id }}" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Client:</label>
+        <div class="col-sm-4">
+          <select name="client" value="{{credit.client.id}}" id="">
+            <option value="{{credit.client.id}}">{{credit.client.name}}</option>
+            {% for client in clients %}
+              {% if credit.client.id != client.id %}
+                <option value="{{client.id}}">{{client.name}}</option>
+              {% endif %}
+            
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Product:</label>
+        <div class="col-sm-4">
+          <select name="product"  id="">
+            <option value="{{credit.product.id}}">{{credit.product.name}}</option>
+            {% for product in products %}
+              {% if credit.product.id != product.id %}
+                <option value="{{product.id}}">{{product.name}}</option>
+              {% endif %}
+            
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Quantite:</label>
+        <div class="col-sm-4">
+          <input type="text" name="quantite" id="quantite" required maxlength="15" value="{{ credit.quantite }}" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success">Update</button>
+        </div>
+      </div>
+    </div>
+  </form> -->

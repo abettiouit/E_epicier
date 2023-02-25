@@ -1,0 +1,45 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/assets/styles/loginStyle.css' %}" />
+    <title>Login Page</title>
+</head>
+
+<body class="p-5" style="background-image: url('/static/assets/images/login.png');">
+    <div class="mx-auto mt-5 p-5 w-50 text-center">
+        <h1 class="text-white font-weight-bolder pageTitle mb-5">LOGIN</h1>
+        <form action="/admin/login/" method="post" >
+            {% csrf_token %}
+            <!-- inpu -->
+            <div class="input-group mb-4 w-75 mx-auto">
+                <input type="text" name="email" class="form-control inputLog px-5 text-white font-weight-light" placeholder="E-mail"
+                    aria-label="email" aria-describedby="basic-addon1">
+            </div>
+            <!-- inpu -->
+            <!-- inpu -->
+            <div class="input-group mb-5 w-75 mx-auto">
+                <input type="password" name="password" class="form-control inputLog px-5 text-white font-weight-light" placeholder="Mot de passe"
+                    aria-label="password" aria-describedby="basic-addon1">
+            </div>
+            <!-- inpu -->
+            
+            <div class="input-group mb-5 w-75 mx-auto">
+                <input type="submit" class="form-control inputLog px-5 text-white font-weight-bolder bg-white border-0 text-dark" value="Se Connecter"
+                    aria-label="se connecter" aria-describedby="basic-addon1">
+            </div>
+        </form>
+        <p class="text-white suggestion"> <a href="/admin/register">Créer</a> votre Compte et commencer à suivre les crédits de vos Clients</p>
+    </div>
+
+</body>
+
+</html>

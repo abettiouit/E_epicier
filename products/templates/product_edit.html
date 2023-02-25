@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Gestion Produit{% endblock %}
+{% block content %}
+
+<div class="my-5 col-9 box-form">
+  <form action="/product/update/{{product.id}}" method="post">
+    {% csrf_token %}
+    <div>
+      <h3 class="p-4 titel-form">Update Produit</h3>
+      <div style="font-weight: 700;" class="text-center">Avec cette page vous pouvez ajouter des nouveaux
+        produits</div>
+      <div class="row py-4">
+        <div class="col-2"></div>
+        <div class="col-4">
+          <input name="name" value="{{product.name}}"  class="input-add" placeholder="Nom Produit" type="text">
+        </div>
+        <div class="col-4">
+          <input name="price" value="{{product.price }}"  placeholder="Prix" class="input-add" type="text">
+        </div>
+        <div class="col-2"></div>
+        <!--  line 2 -->
+        <div class="col-2"></div>
+        <div class="col-4 py-4">
+          <input name="quantite" value="{{product.quantite }}"  placeholder="Quantite" class="input-add" type="text">
+        </div>
+        <div class="col-4 py-4">
+          <input name="description" value="{{product.description }}"  placeholder="Desrciption" class="input-add" type="text">
+        </div>
+        <div class="col-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4">
+          <button type="submit" style="background: rgba(0, 0, 0, 0.73);color: #FFFFFF; border:1px solid #000000;"
+            class="input-add">Update</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
